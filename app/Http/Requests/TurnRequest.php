@@ -26,7 +26,11 @@ class TurnRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'percent_discount' => 'required|digits_between:0,100',
+            'time_start' => 'required',
+            'time_end' => 'required',
+            'max_reservation' => 'required',
+            'day' => 'required'
         ];
     }
 

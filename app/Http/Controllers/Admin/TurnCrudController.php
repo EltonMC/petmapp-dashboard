@@ -35,7 +35,41 @@ class TurnCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
-
+        // modify fields
+        $this->crud->modifyField('service_id', 
+            [  // Select
+                'label' => "Service",
+                'type' => 'select2',
+                'name' => 'id', // the db column for the foreign key
+                'entity' => 'service', // the method that defines the relationship in your Model
+                'attribute' => 'id', // foreign key attribute that is shown to user
+                'model' => "App\Models\Service" // foreign key model
+            ]
+        );
+        $this->crud->modifyField('day', 
+            [ 
+                'name' => 'day',
+                'label' => "Day",
+                'type' => 'select_from_array',
+                'options' => ['mon' => 'Monday', 
+                            'tue' => 'Tuesday', 
+                            'wed' => 'Wednesday', 
+                            'thu' => 'Thursday', 
+                            'fri' => 'Friday',
+                            'sat' => 'Saturday', 
+                            'sun' => 'Sunday'
+                        ],
+                'allows_null' => false,
+                'default' => 'mon',
+            ]
+        );
+        $this->crud->modifyField('status', 
+            [ 
+                'name' => 'status',
+                'label' => "Status",
+                'type' => 'checkbox',
+            ]
+        );
         // add asterisk for fields that are required in TurnRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
