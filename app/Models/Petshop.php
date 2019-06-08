@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 use Backpack\CRUD\CrudTrait;
 use Cloudder;
 
 class Petshop extends Model
 {
     use CrudTrait;
+    use HasRoles; 
 
     /*
     |--------------------------------------------------------------------------

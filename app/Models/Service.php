@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 use Backpack\CRUD\CrudTrait;
 
 class Service extends Model
 {
     use CrudTrait;
+    use HasRoles; 
 
     /*
     |--------------------------------------------------------------------------
