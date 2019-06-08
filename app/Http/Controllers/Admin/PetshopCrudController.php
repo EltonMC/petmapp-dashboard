@@ -46,7 +46,7 @@ class PetshopCrudController extends CrudController
         $this->crud->modifyField('user_id', 
             [  // Select
                 'label' => "User",
-                'type' => 'select',
+                'type' => 'select2',
                 'name' => 'id', // the db column for the foreign key
                 'entity' => 'user', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user

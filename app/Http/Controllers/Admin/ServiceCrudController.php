@@ -36,6 +36,37 @@ class ServiceCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
+        // delete fields
+        $this->crud->removeField('max_discount');
+        
+        // modify fields
+        $this->crud->modifyField('petshop_id', 
+            [  // Select
+                'label' => "Petshop",
+                'type' => 'select2',
+                'name' => 'id', // the db column for the foreign key
+                'entity' => 'petshop', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Models\Petshop" // foreign key model
+            ]
+        );
+        $this->crud->modifyField('type', 
+            [ 
+                'name' => 'type',
+                'label' => "Type",
+                'type' => 'select_from_array',
+                'options' => ['shower' => 'Shower', 'cough' => 'Cough'],
+                'allows_null' => false,
+                'default' => 'shower',
+            ]
+        );
+        $this->crud->modifyField('status', 
+            [ 
+                'name' => 'status',
+                'label' => "Status",
+                'type' => 'checkbox',
+            ]
+        );
         // add asterisk for fields that are required in ServiceRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
