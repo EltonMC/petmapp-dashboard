@@ -26,7 +26,9 @@ class PetshopRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|min:8|max:255',
+            // 'max_discount' => 'required|digits_between:0,100',
+            'schedule' => 'required'
         ];
     }
 

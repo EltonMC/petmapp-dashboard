@@ -37,12 +37,9 @@ class PetshopCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
-        // add asterisk for fields that are required in PetshopRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
-
         // delete fields
         $this->crud->removeField('num_services');
+        $this->crud->removeField('max_discount');
         $this->crud->removeField('rating_average');
 
         // modify fields
@@ -57,9 +54,26 @@ class PetshopCrudController extends CrudController
             ]
         );
 
-        
+        $this->crud->modifyField('logo', 
+            [
+                'attributes' => [
+                    'disabled'=>'disabled',
+                ], // change the HTML attributes of your input]
+            ]
+        );
 
+        $this->crud->addField([ // image
+            'label' => "Logo",
+            'name' => "image",
+            'type' => 'image',
+            'upload' => true,
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
+        ]);
 
+        // add asterisk for fields that are required in PetshopRequest
+        $this->crud->setRequiredFields(StoreRequest::class, 'create');
+        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
 
     }
