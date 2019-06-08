@@ -40,8 +40,27 @@ class PetshopCrudController extends CrudController
         // add asterisk for fields that are required in PetshopRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+
+        // delete fields
         $this->crud->removeField('num_services');
         $this->crud->removeField('rating_average');
+
+        // modify fields
+        $this->crud->modifyField('user_id', 
+            [  // Select
+                'label' => "User",
+                'type' => 'select',
+                'name' => 'id', // the db column for the foreign key
+                'entity' => 'user', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\User" // foreign key model
+            ]
+        );
+
+        
+
+
+
 
     }
 
