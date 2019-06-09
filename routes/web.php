@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->guest(backpack_url('login'));
 });
