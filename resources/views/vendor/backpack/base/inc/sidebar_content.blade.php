@@ -14,4 +14,3 @@
 <li><a href='{{ backpack_url('turn') }}'><i class='fa fa-briefcase'></i> <span>Turns<span></a></li>
 <li><a href='{{ backpack_url('reservation') }}'><i class='fa fa-calendar-check-o'></i> <span>Reservations<span></a></li>
 <!-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> -->
-Backpack\PermissionManager\app\Http\Controllers\UserCrudController@index
