@@ -27,7 +27,6 @@ class PetshopRequest extends FormRequest
     {
         return [
             'name' => 'required|min:8|max:255',
-            'user_id' => 'required',
             'schedule' => 'required'
         ];
     }

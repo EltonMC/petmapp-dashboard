@@ -19,7 +19,7 @@ return [
     'logo_mini' => '<b>P</b>m',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Elton Carvalho',
+    'developer_name' => 'Pet Mapp Dev',
 
     // Developer website. Link in footer.
     'developer_link' => 'pet-mapp.com.br',
@@ -94,6 +94,7 @@ return [
     'middleware_class' => [
         App\Http\Middleware\CheckIfAdmin::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\AdminMiddleware::class,
         // \Backpack\Base\app\Http\Middleware\UseBackpackAuthGuardInsteadOfDefaultAuthGuard::class,
     ],
 
