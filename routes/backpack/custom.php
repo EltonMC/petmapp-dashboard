@@ -24,4 +24,5 @@ Route::group([
     CRUD::resource('user', 'UserCrudController');
     CRUD::resource('phone', 'PhoneCrudController');
     CRUD::resource('address', 'AddressCrudController');
+    CRUD::resource('petshopImage', 'PetshopImageCrudController');
 }); // this should be the absolute last line of this file
