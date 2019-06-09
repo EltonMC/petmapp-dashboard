@@ -35,7 +35,12 @@ class TurnCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
-        
+
+        $this->crud->addColumn([
+            'name' => 'id', // The db column name
+            'label' => "ID", // Table column heading
+        ]);
+
         // modify fields
         $this->crud->modifyField('service_id', 
             [  // Select

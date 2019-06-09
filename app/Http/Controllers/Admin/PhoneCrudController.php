@@ -36,6 +36,18 @@ class PhoneCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
+        // modify column
+        $this->crud->modifyColumn('user_id', 
+            [  // Select
+                'label' => "User",
+                'type' => 'select',
+                'name' => 'user_id', // the db column for the foreign key
+                'entity' => 'user', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\User" // foreign key model
+            ]
+        );
+        
         // modify fields
         $this->crud->modifyField('user_id', 
             [  // Select

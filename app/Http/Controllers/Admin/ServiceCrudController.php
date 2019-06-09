@@ -36,9 +36,26 @@ class ServiceCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
+        $this->crud->addColumn([
+            'name' => 'id', // The db column name
+            'label' => "ID", // Table column heading
+        ]);
+
         // delete fields
         $this->crud->removeField('max_discount');
         
+        // modify column
+        $this->crud->modifyColumn('petshop_id', 
+            [  // Select
+                'label' => "Petshop",
+                'type' => 'select',
+                'name' => 'petshop_id', // the db column for the foreign key
+                'entity' => 'petshop', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Models\Petshop" // foreign key model
+            ]
+        );
+
         // modify fields
         $this->crud->modifyField('petshop_id', 
             [  // Select
@@ -50,7 +67,7 @@ class ServiceCrudController extends CrudController
                 'model' => "App\Models\Petshop" // foreign key model
             ]
         );
-        
+
         $this->crud->modifyField('type', 
             [ 
                 'name' => 'type',
