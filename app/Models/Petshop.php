@@ -22,7 +22,7 @@ class Petshop extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['user_id', 'name', 'logo', 'schedule'];
+    protected $fillable = ['user_id', 'name', 'logo', 'schedule', 'image'];
     // protected $hidden = ['rating_average'];
     // protected $dates = [];
 
