@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\TurnRequest as StoreRequest;
-use App\Http\Requests\TurnRequest as UpdateRequest;
+use App\Http\Requests\AddressRequest as StoreRequest;
+use App\Http\Requests\AddressRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class TurnCrudController
+ * Class AddressCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class TurnCrudController extends CrudController
+class AddressCrudController extends CrudController
 {
     public function setup()
     {
@@ -23,9 +23,9 @@ class TurnCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Turn');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/turn');
-        $this->crud->setEntityNameStrings('turn', 'turns');
+        $this->crud->setModel('App\Models\Address');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/address');
+        $this->crud->setEntityNameStrings('address', 'addresses');
 
         /*
         |--------------------------------------------------------------------------
@@ -35,43 +35,28 @@ class TurnCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
-        
+
+        // remove fields
+        $this->crud->removeField('latitude');
+        $this->crud->removeField('longitude');
+
+        // remove columsn
+        $this->crud->removeColumn('latitude');
+        $this->crud->removeColumn('longitude');
+
         // modify fields
-        $this->crud->modifyField('service_id', 
+        $this->crud->modifyField('user_id', 
             [  // Select
-                'label' => "Service",
+                'label' => "User",
                 'type' => 'select2',
-                'name' => 'service_id', // the db column for the foreign key
-                'entity' => 'service', // the method that defines the relationship in your Model
-                'attribute' => 'id', // foreign key attribute that is shown to user
-                'model' => "App\Models\Service" // foreign key model
+                'name' => 'user_id', // the db column for the foreign key
+                'entity' => 'user', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\User" // foreign key model
             ]
         );
-        $this->crud->modifyField('day', 
-            [ 
-                'name' => 'day',
-                'label' => "Day",
-                'type' => 'select_from_array',
-                'options' => ['mon' => 'Monday', 
-                            'tue' => 'Tuesday', 
-                            'wed' => 'Wednesday', 
-                            'thu' => 'Thursday', 
-                            'fri' => 'Friday',
-                            'sat' => 'Saturday', 
-                            'sun' => 'Sunday'
-                        ],
-                'allows_null' => false,
-                'default' => 'mon',
-            ]
-        );
-        $this->crud->modifyField('status', 
-            [ 
-                'name' => 'status',
-                'label' => "Status",
-                'type' => 'checkbox',
-            ]
-        );
-        // add asterisk for fields that are required in TurnRequest
+
+        // add asterisk for fields that are required in AddressRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }

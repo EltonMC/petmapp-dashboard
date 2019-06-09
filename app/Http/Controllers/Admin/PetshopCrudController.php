@@ -37,17 +37,22 @@ class PetshopCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
-        // delete fields
-        $this->crud->removeField('num_services');
-        $this->crud->removeField('max_discount');
-        $this->crud->removeField('rating_average');
+        // remove columns
+        $this->crud->removeColumn('description');
+        $this->crud->removeColumn('logo');
+
+        // remove fields
+        // $this->crud->removeField('description');
+        // $this->crud->removeField('num_services');
+        // $this->crud->removeField('max_discount');
+        // $this->crud->removeField('rating_average');
 
         // modify fields
         $this->crud->modifyField('user_id', 
             [  // Select
                 'label' => "User",
                 'type' => 'select2',
-                'name' => 'id', // the db column for the foreign key
+                'name' => 'user_id', // the db column for the foreign key
                 'entity' => 'user', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'model' => "App\User" // foreign key model

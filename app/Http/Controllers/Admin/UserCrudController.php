@@ -18,6 +18,7 @@ class UserCrudController extends CrudController
 {
     public function setup()
     {
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information

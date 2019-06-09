@@ -21,8 +21,8 @@ class Petshop extends Model
     protected $table = 'petshops';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id', 'rating_average'];
-    protected $fillable = [];
+    protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'name', 'logo', 'schedule'];
     // protected $hidden = ['rating_average'];
     // protected $dates = [];
 

@@ -20,7 +20,7 @@ class Service extends Model
     protected $table = 'services';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
     protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -36,6 +36,14 @@ class Service extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    public function petshop(){
+        return $this->belongsTo('App\Models\Petshop');
+    }
+
+    public function turns(){
+        return $this->hasOne('App\\Models\Turn');
+    }
 
     /*
     |--------------------------------------------------------------------------

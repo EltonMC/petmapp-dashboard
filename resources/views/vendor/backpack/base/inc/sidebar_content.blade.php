@@ -4,6 +4,8 @@
     <a href="#"><i class="fa fa-group"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
       <li><a href="{{ backpack_url('user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+      <li><a href='{{ backpack_url('phone') }}'><i class='fa fa-phone'></i> <span>Phones<span></a></li>    
+      <li><a href='{{ backpack_url('address') }}'><i class='fa fa-map-marker	'></i> <span>Address<span></a></li>    
       <li><a href="{{ backpack_url('role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
       <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
     </ul>
@@ -12,3 +14,4 @@
 <li><a href='{{ backpack_url('turn') }}'><i class='fa fa-briefcase'></i> <span>Turns<span></a></li>
 <li><a href='{{ backpack_url('reservation') }}'><i class='fa fa-calendar-check-o'></i> <span>Reservations<span></a></li>
 <!-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> -->
+Backpack\PermissionManager\app\Http\Controllers\UserCrudController@index

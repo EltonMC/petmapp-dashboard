@@ -44,12 +44,13 @@ class ServiceCrudController extends CrudController
             [  // Select
                 'label' => "Petshop",
                 'type' => 'select2',
-                'name' => 'id', // the db column for the foreign key
+                'name' => 'petshop_id', // the db column for the foreign key
                 'entity' => 'petshop', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'model' => "App\Models\Petshop" // foreign key model
             ]
         );
+        
         $this->crud->modifyField('type', 
             [ 
                 'name' => 'type',

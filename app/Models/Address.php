@@ -3,21 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Traits\HasRoles;
 use Backpack\CRUD\CrudTrait;
 
-class Turn extends Model
+class Address extends Model
 {
     use CrudTrait;
-    use HasRoles; 
-    
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'turns';
+    protected $table = 'addresses';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -36,11 +34,10 @@ class Turn extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    
-    public function service(){
-        return $this->belongsTo('App\Models\Service');
-    }
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
